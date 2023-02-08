@@ -1,5 +1,5 @@
-import {Router} from 'express';
-//import Prueba from './Prueba.js'
+const {Router} = require( 'express');
+const Product = require('./Product.js');
 
 
 const router = Router();
@@ -8,4 +8,4 @@ const router = Router();
 
 
 
-export default router
+module.exports = router

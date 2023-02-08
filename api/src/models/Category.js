@@ -1,7 +1,7 @@
-import { DataTypes} from 'sequelize'
-import {sequelize} from '../database/db.js'
+const { DataTypes} = require ('sequelize')
+//import {sequelize} from '../database/db.js'
 
-export const category = sequelize.define('category', {
+const category = (sequelize)=> sequelize.define("Category", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,3 +12,4 @@ export const category = sequelize.define('category', {
     }
 })
 
+module.exports = category
