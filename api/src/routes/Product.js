@@ -5,7 +5,9 @@ const router = Router();
 router.get('/', async (req, res) => {
     try {
         const product = await Product.findAll({
-            include:Category
+            include:[{
+                model: Category
+            }]
         })
         res.status(200).json(product)
     } catch (err) {
