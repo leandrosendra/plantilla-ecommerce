@@ -1,13 +1,57 @@
-const {Router} = require('express');
+const { Router } = require('express');
+const { Product } = require('../models/Product')
 const router = Router();
 
-router.get
+router.get('/', async (req, res) => {
+    try {
+        const product = await Product.findAll()
+        res.status(200).json(product)
+    } catch (err) {
+        console.log(err);
+    }
+})
 
-router.post
+router.post('/', async (req, res) => {
+    const { name, description, stock, image, price } = req.body;
+    try {
+        const product = await Product.create({
+            name, description, stock, image, price
+        })
+        res.status(200).json(product)
+    } catch (err) {
+        console.log(err);
+    }
+})
 
-router.put
+router.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { name, price, image, stock, description } = req.body;
+    try {
+        const product = await Product.findByPk(id)
+        product.name = name;
+        product.price = price;
+        product.image = image;
+        product.description = description;
+        product.stock = stock;
 
-router.delete
+        await product.save()
+        res.status(200).json(product)
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const product = await Product.destroy({
+            where: { id: id },
+        });
+        res.status(200).json(product);
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 
 module.exports = router

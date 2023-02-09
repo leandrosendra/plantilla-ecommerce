@@ -20,7 +20,7 @@ const Product = (sequelize) => sequelize.define("Product", {
     stock: {
         type: DataTypes.INTEGER
     },
-    picture: {
+    image: {
         type: DataTypes.STRING
     },
     price:{
