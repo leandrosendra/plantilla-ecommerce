@@ -7,3 +7,13 @@ Producto: ID, NAME, FOTO, DESCRIPTION, CATEGORIA, PRECIO, STOCK
     PRODUCTOS COMPRADOS: USARIO COMPRADOR(ID DEL USUARIO), PRODUCTO COMPRADO(ID DE PRODUCTO), FECHA
     COMENTARIO: USERNAME, FECHA, COMENTARIO
     ?CATEGORIA: NAME  
+
+
+    CARRITO -> contien mucho product(stock = xx)
+    Product -> pertenece a varios CARRITO
+
+    USARIO -> contien un CARRITO
+    CARRITO -> pertenece a varios USARIO
+
+
+    

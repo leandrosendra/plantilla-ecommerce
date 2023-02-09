@@ -1,10 +1,12 @@
 const { Router } = require('express');
-const { Product } = require('../models/Product')
+const { Product, Category } = require('../database/db.js')
 const router = Router();
 
 router.get('/', async (req, res) => {
     try {
-        const product = await Product.findAll()
+        const product = await Product.findAll({
+            include:Category
+        })
         res.status(200).json(product)
     } catch (err) {
         console.log(err);
@@ -12,11 +14,12 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const { name, description, stock, image, price } = req.body;
+    const { name, description, stock, image, price, categoryId } = req.body;
     try {
         const product = await Product.create({
             name, description, stock, image, price
         })
+        product.setCategory(categoryId)
         res.status(200).json(product)
     } catch (err) {
         console.log(err);
