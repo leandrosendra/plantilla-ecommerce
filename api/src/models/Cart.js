@@ -8,5 +8,5 @@ const cart = (sequelize)=> sequelize.define("Cart", {
         autoIncrement: true
     }
 })
-
+ 
 module.exports = cart

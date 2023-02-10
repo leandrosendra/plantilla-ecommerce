@@ -5,7 +5,7 @@ const cartM = require ('../models/Cart.js');
 const userM = require ('../models/User.js');
 
 
-const sequelize = new Sequelize('plantillas', 'postgres', 'password', {
+const sequelize = new Sequelize('plantillas', 'postgres', 'root', {
     host: 'localhost',
     dialect: 'postgres',
     logging:false 

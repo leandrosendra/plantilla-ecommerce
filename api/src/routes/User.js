@@ -21,9 +21,21 @@ router.post('/', async (req, res) => {
     } catch (err) {
         console.log(err);
     }
-})
+});
 
-router.delete('/:id', async (req, res) => {
+router.post('/bulk', async(req,res)=>{
+    const bulk = req.body;
+    console.log(bulk)
+    try {
+        const user = await User.bulkCreate(bulk)
+        res.status(200).json(user) 
+    } catch (err) {
+        console.log(err);
+        console.log('err create user for bulk');
+    }
+}) 
+
+router.delete('/:id', async (req, res) => { 
     const { id } = req.params
     try {
         const user = await User.destroy({
