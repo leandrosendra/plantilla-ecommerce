@@ -1,12 +1,16 @@
-import './App.css';
-import ControlBack from "./Components/ControlBack/ControlBack";
+import { Route, Routes } from "react-router-dom";
+import Home from './components/Home'
+import SignIn from './components/SignIn'
 
 function App() {
 
   return (
-    <div className="App">
-     
-     <ControlBack/>
+    <div>
+
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signin" element={<SignIn />} />
+    </Routes>
     </div>
   )
 }
