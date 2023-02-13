@@ -1,7 +1,7 @@
 import { Fragment, useState, React } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Product from './Product'
 
 const navigation = {
@@ -452,7 +452,9 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <Product/>
+      {/* <Link to='/productOverview'>
+        <Product />
+      </Link> */}
     </div>
   )
 }
