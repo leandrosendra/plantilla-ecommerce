@@ -3,6 +3,7 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import Product from './Product'
+import {useAuth0} from '@auth0/auth0-react'
 
 const navigation = {
   categories: [
@@ -134,6 +135,9 @@ function classNames(...classes) {
 export default function Home() {
   const [open, setOpen] = useState(false)
 
+  const { user} = useAuth0()
+  console.log(user);
+
   return (
     <div className="bg-white">
       {/* Mobile menu */}
@@ -248,9 +252,9 @@ export default function Home() {
 
                 <div className="space-y-6 border-t border-gray-200 py-6 px-4">
                   <div className="flow-root">
-                    <Link to='' className="-m-2 block p-2 font-medium text-gray-900">
+                    <button className="-m-2 block p-2 font-medium text-gray-900">
                       Sign in
-                    </Link>
+                    </button>
                   </div>
                   <div className="flow-root">
                     <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
@@ -278,7 +282,7 @@ export default function Home() {
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
+        blablabla
         </p>
 
         <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -407,9 +411,9 @@ export default function Home() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <Link to='/signin' className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                  <button onClick={()=> loginWithRedirect()} className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Sign in
-                  </Link>
+                  </button>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Create account
@@ -452,9 +456,9 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      {/* <Link to='/productOverview'>
+      <Link to='/productOverview'>
         <Product />
-      </Link> */}
+      </Link>
     </div>
   )
 }
