@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
         if(checkPassword) {
             res.send({
                 data: user,
-                token: tokenSession
+                tokenSession
             })
         }
     } catch (err) {
