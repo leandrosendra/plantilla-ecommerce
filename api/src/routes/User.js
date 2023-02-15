@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
     }
 })
 
+
 router.post('/', async (req, res) => {
     const { name, email, password, isAdmin } = req.body;
     try {
