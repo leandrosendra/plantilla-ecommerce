@@ -1,24 +1,26 @@
 import { Fragment, useState, React } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import Product from './Product'
-import {useAuth0} from '@auth0/auth0-react'
+import sunglass from '../assets/sunglass.png'
+import Swiper from './Swiper'
+import Footer from './Footer'
 
 const navigation = {
   categories: [
     {
       id: 'women',
-      name: 'Women',
+      name: 'Mujeres',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'Nueva temporada',
           href: '#',
           imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
           imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
         },
         {
-          name: 'Basic Tees',
+          name: 'Camisetas Básicas',
           href: '#',
           imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
           imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
@@ -27,56 +29,55 @@ const navigation = {
       sections: [
         {
           id: 'clothing',
-          name: 'Clothing',
+          name: 'Ropa',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Denim', href: '#' },
+            { name: 'Remeras', href: '#' },
+            { name: 'Vestidos', href: '#' },
+            { name: 'Pantalones', href: '#' },
+            { name: 'Jeans', href: '#' },
             { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: 'Chaquetas', href: '#' },
+            { name: 'Deportiva', href: '#' },
+            { name: 'Ver todo', href: '#' },
           ],
         },
         {
           id: 'accessories',
-          name: 'Accessories',
+          name: 'Accessorios',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Relojes', href: '#' },
+            { name: 'Billeteras', href: '#' },
+            { name: 'Mochilas', href: '#' },
+            { name: 'Gafas', href: '#' },
+            { name: 'Sombreros', href: '#' },
+            { name: 'Cintos', href: '#' },
           ],
         },
         {
           id: 'brands',
-          name: 'Brands',
+          name: 'Marcas',
           items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
+            { name: 'Balenciaga', href: '#' },
+            { name: 'Louis Vuitton', href: '#' },
+            { name: 'Gucci', href: '#' },
+            { name: 'Burberry', href: '#' },
+            { name: 'Otros', href: '#' },
           ],
         },
       ],
     },
     {
       id: 'men',
-      name: 'Men',
+      name: 'Hombres',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'Nueva temporada',
           href: '#',
           imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
           imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
         },
         {
-          name: 'Artwork Tees',
+          name: 'Camisetas artísticas',
           href: '#',
           imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
           imageAlt:
@@ -86,45 +87,47 @@ const navigation = {
       sections: [
         {
           id: 'clothing',
-          name: 'Clothing',
+          name: 'Ropa',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
+            { name: 'Remeras', href: '#' },
+            { name: 'Vestidos', href: '#' },
+            { name: 'Pantalones', href: '#' },
+            { name: 'Jeans', href: '#' },
             { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: 'Chaquetas', href: '#' },
+            { name: 'Deportiva', href: '#' },
+            { name: 'Ver todo', href: '#' },
           ],
         },
         {
           id: 'accessories',
-          name: 'Accessories',
+          name: 'Accessorios',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Relojes', href: '#' },
+            { name: 'Billeteras', href: '#' },
+            { name: 'Mochilas', href: '#' },
+            { name: 'Gafas', href: '#' },
+            { name: 'Sombreros', href: '#' },
+            { name: 'Cintos', href: '#' },
           ],
         },
         {
           id: 'brands',
-          name: 'Brands',
+          name: 'Marcas',
           items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
+            { name: 'Balenciaga', href: '#' },
+            { name: 'Louis Vuitton', href: '#' },
+            { name: 'Gucci', href: '#' },
+            { name: 'Burberry', href: '#' },
+            { name: 'Otros', href: '#' },
           ],
         },
       ],
     },
   ],
   pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
+    { name: 'Productos', href: '#' },
+    { name: 'Tiendas', href: '#' },
   ],
 }
 
@@ -134,9 +137,6 @@ function classNames(...classes) {
 
 export default function Home() {
   const [open, setOpen] = useState(false)
-
-  const { user} = useAuth0()
-  console.log(user);
 
   return (
     <div className="bg-white">
@@ -253,7 +253,7 @@ export default function Home() {
                 <div className="space-y-6 border-t border-gray-200 py-6 px-4">
                   <div className="flow-root">
                     <button className="-m-2 block p-2 font-medium text-gray-900">
-                      Sign in
+                      Iniciar Sesión
                     </button>
                   </div>
                   <div className="flow-root">
@@ -281,8 +281,8 @@ export default function Home() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-        blablabla
+        <p className="flex h-10 items-center justify-center bg-blue px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        Envíos gratis a partir de $500
         </p>
 
         <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -360,7 +360,7 @@ export default function Home() {
                                             {item.name}
                                           </a>
                                           <p aria-hidden="true" className="mt-1">
-                                            Shop now
+                                            Ver
                                           </p>
                                         </div>
                                       ))}
@@ -412,27 +412,14 @@ export default function Home() {
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <button onClick={()=> loginWithRedirect()} className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
+                    Iniciar sesión
                   </button>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
+                    Registrarse
                   </a>
                 </div>
 
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
-
-                {/* Search */}
                 <div className="flex lg:ml-6">
                   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
@@ -440,7 +427,6 @@ export default function Home() {
                   </a>
                 </div>
 
-                {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
                   <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
@@ -451,14 +437,33 @@ export default function Home() {
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </div>
+
+                <div className="flex lg:ml-6">
+                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                    <span className="sr-only">Search</span>
+                    <UserCircleIcon className="h-6 w-6" aria-hidden="true" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </nav>
       </header>
+      <div className='h-96 w-screen bg-blue mt-6 flex items-center justify-center flex-col'>
+        <p className='text-lg text-white'>Hasta 12 cuotas sin intereses en productos seleccionados</p>
+        <img width='200px' src={sunglass} alt="" />
+        <h1 className='text-white font-serif text-6xl'>VERANO</h1>
+        <p className='text-lg text-white'>Hasta <span className='text-6xl text-white font-extrabold'>50%</span> off</p>
+      </div>
+      <Swiper/>
+      <div className='h-10 bg-blue'></div>
+      <div className='flex items-center justify-center'>
+        <h1 className='font-extrabold'>¡PRODUCTOS DESTACADOS DEL MES!</h1>
+      </div>
       <Link to='/productOverview'>
         <Product />
       </Link>
+      <Footer/>
     </div>
   )
 }
