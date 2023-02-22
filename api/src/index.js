@@ -3,7 +3,7 @@ const {sequelize} = require ('./database/db.js');
 require('dotenv').config();
 
 const port = process.env.PORT || 3005;
-//console.log(port);
+console.log(port);
 
 (async ()=> {
     try {

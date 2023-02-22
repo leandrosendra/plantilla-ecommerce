@@ -3,12 +3,8 @@ const { DataTypes} = require ('sequelize')
 
 const category = (sequelize)=> sequelize.define("Category", {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        primaryKey: true
     }
 })
 
