@@ -282,7 +282,7 @@ export default function Home() {
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-blue px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-        Envíos gratis a partir de $500
+        如果你是短髮，可以免費送貨
         </p>
 
         <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
