@@ -1,4 +1,4 @@
-import {GET_PRODUCTS, ALL_CATEGORY} from '../Action/actionTypes.js'
+import {GET_PRODUCTS, ALL_CATEGORY, CREATE_PRODUCT} from '../Action/actionTypes.js'
 
 const initialState = {
     product: [],
@@ -20,7 +20,10 @@ export function rootReducer(state = initialState, action) {
               ...state, 
               category: action.payload
             };
-        
+            case CREATE_PRODUCT: 
+            return {
+              ...state, 
+            };
         default:
             return state;
     }
