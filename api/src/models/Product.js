@@ -18,7 +18,7 @@ const Product = (sequelize) => sequelize.define("Product", {
 			defaultValue: 'Sin Genero'
     },
     image: { 
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     },
     brand:{
         type: DataTypes.STRING

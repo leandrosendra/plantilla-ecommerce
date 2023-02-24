@@ -36,7 +36,7 @@ const getSize = async(req,res)=>{
 const postCategory = async(req, res)=>{
     const hola = req.body;
     try {
-        const category = await Category.bulkCreate(hola);
+        const category = await Category.create(hola);
         res.status(200).json(category);
     } catch (err){
         console.log(err);
@@ -47,7 +47,7 @@ const postCategory = async(req, res)=>{
 const postColor = async(req, res)=>{
     const names = req.body;
     try {
-        const color = await Color.bulkCreate(names);
+        const color = await Color.create(names);
         res.status(200).json(color);
     } catch (err){
         console.log(err);
@@ -58,7 +58,7 @@ const postColor = async(req, res)=>{
 const postSize = async(req, res)=>{
     const ids = req.body;
     try {
-        const size = await Size.bulkCreate(ids);
+        const size = await Size.create(ids);
         res.status(200).json(size);
     } catch (err){
         console.log(err);
