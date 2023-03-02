@@ -10,7 +10,7 @@ console.log(port);
       app.listen(port)
       await sequelize.sync({force: true});  
       console.log('server running');     
-    } catch (error) { 
+    } catch (error) {  
       console.error('Unable to connect to the database:', error);  
     }
 })() 

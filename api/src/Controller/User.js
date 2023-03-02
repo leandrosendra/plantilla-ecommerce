@@ -1,4 +1,4 @@
-const { User } = require('../database/db.js')
+const { User, Cart } = require('../database/db.js')
 
 const getUser = async (req, res) => {
     try {

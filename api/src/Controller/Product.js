@@ -46,7 +46,7 @@ const bulkProduct = async(req,res)=>{
     try {
       const products = await Product.bulkCreate(bulk)
       res.status(200).json(products) 
-      console.log(products)
+      //console.log(products)
     } catch (err) {
         console.log(err);
         console.log('err create user for bulk'); 
@@ -91,3 +91,9 @@ module.exports = {
     putProuct,
     deleteProduct
 }
+
+/*
+JSON Colors, Size
+Ver lo del carrito y Offert
+
+*/
