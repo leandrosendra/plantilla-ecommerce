@@ -8,7 +8,7 @@ router.get('/color', getColors);
 router.get('/size', getSize);
 
 router.post('/category', postCategory);
-router.post('/color', postColor);
-router.post('/size', postSize);
+//router.post('/color', postColor);
+//router.post('/size', postSize);
 
 module.exports = router 
