@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_PRODUCTS, ALL_CATEGORY, ADD_PRODUCTS} from './actionTypes.js';
+import {GET_PRODUCTS, ALL_CATEGORY, ADD_PRODUCTS, CREATE_PRODUCT} from './actionTypes.js';
 
 
 export const allProduct = ()=> {
@@ -13,6 +13,21 @@ export const allProduct = ()=> {
       // console.log(products);
     };
   }
+
+  export function createProduct(payload) {
+    return async function(dispatch) {
+        try {
+            const response = await axios.post("http://localhost:3001/product", payload)
+            return {
+                type: CREATE_PRODUCT,
+                payload: response
+            }
+        }
+        catch(error) {
+            console.log(error)
+        }
+    }
+}
 
 export const createCategory = (payload) =>{
   console.log(payload);

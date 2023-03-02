@@ -7,7 +7,7 @@ console.log(port);
 
 (async ()=> {
     try {
-      app.listen(port)
+      app.listen(port) 
       await sequelize.sync({force: true});  
       console.log('server running');     
     } catch (error) {  

@@ -23,14 +23,16 @@ const getProduct = async (req, res) => {
 
 
 const postPrduct = async (req, res) => {
-    const { name, description, stock, image, price, categoryId, ColorId, SizeId } = req.body;
+    const { name, brand, genero, description, stock, image, price, categoryId, ColorId, SizeId } = req.body;
     try {
       const product = await Product.create({  
         name,
         description,
         stock,
         image, 
-        price
+        price,
+        brand,
+        genero
       });
       product.setCategory(categoryId);
       product.addColors(ColorId);

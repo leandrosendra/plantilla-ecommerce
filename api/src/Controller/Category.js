@@ -38,7 +38,7 @@ const getSize = async(req,res)=>{
 const postCategory = async(req, res)=>{
     const hola = req.body;
     try {
-        const category = await Category.bulkCreate(hola);
+        const category = await Category.create(hola);
         res.status(200).json(category);
     } catch (err){
         console.log(err);
@@ -64,14 +64,11 @@ const colors = [
 ]
 
 const createColors = async()=>{ //index "force: false" sino no anda
-    //console.log(colors); 
     const allColors = await Color.findAll();
     if(!allColors.length){
       await Color.bulkCreate(colors);
     }
-
 }
-
 
 const size = [
 
@@ -93,13 +90,10 @@ const size = [
 
 ]
 const createSize = async()=>{ //index "force: false" sino no anda
-    // console.log(size);
     const allSize = await Size.findAll();
     if(!allSize.length){
         await Size.bulkCreate(size);
       }
-    
-    //await Size.findOrCreate(size);
 }
 
 module.exports= {
