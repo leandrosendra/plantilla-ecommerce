@@ -3,6 +3,7 @@ import Home from './components/Home'
 import SignIn from './components/SignIn'
 import Overview from './components/ProductOverview'
 import CreateProduct from "./components/CreateProduct";
+import AllProducts from "./components/AllProducts";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Route path="/signin" element={<SignIn />} />
       <Route path="/productOverview" element={<Overview />} />
       <Route path ="/createProduct" element={<CreateProduct />} />
+      <Route path ="/allproducts" element={<AllProducts />} />
     </Routes>
     </div>
   )
