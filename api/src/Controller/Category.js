@@ -12,6 +12,7 @@ const getCategory = async(req, res)=>{
 }
 
 const getColors = async(req,res)=>{
+    //createColors()
     try{
         const color = await Color.findAll();
         res.status(200).json(color);
@@ -23,6 +24,7 @@ const getColors = async(req,res)=>{
 }
 
 const getSize = async(req,res)=>{
+    //createSize()
     try{
         const size = await Size.findAll();
         res.status(200).json(size);
@@ -44,26 +46,54 @@ const postCategory = async(req, res)=>{
     }
 }
 
-const postColor = async(req, res)=>{
-    const names = req.body;
-    try {
-        const color = await Color.create(names);
-        res.status(200).json(color);
-    } catch (err){
-        console.log(err);
-        res.status(400).send('err en post Color');
+const colors = [
+
+	{
+		"id":"Negro"
+	},	
+	{
+		"id":"Blanco"
+	},
+	{
+		"id":"Amarillo"
+	},
+	{
+		"id":"Rojo"
+	}
+
+]
+
+const createColors = async()=>{ //index "force: false" sino no anda
+    const allColors = await Color.findAll();
+    if(!allColors.length){
+      await Color.bulkCreate(colors);
     }
 }
 
-const postSize = async(req, res)=>{
-    const ids = req.body;
-    try {
-        const size = await Size.create(ids);
-        res.status(200).json(size);
-    } catch (err){
-        console.log(err);
-        res.status(400).send('err en post Size');
-    }
+const size = [
+
+	{
+		"id":"S"
+	},	
+	{
+		"id":"M"
+	},
+	{
+		"id":"L"
+	},
+	{
+		"id":"XL"
+	},
+	{
+		"id":"XXL"
+	}
+
+]
+const createSize = async()=>{ //index "force: false" sino no anda
+    const allSize = await Size.findAll();
+    if(!allSize.length){
+        await Size.bulkCreate(size);
+      }
 }
 
 module.exports= {
@@ -71,6 +101,7 @@ module.exports= {
     getColors,
     getSize,
     postCategory,
-    postColor,
-    postSize
+    createColors,
+    createSize
+    
 }
