@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createProduct, allProduct } from '../Redux/Action/action'
 import Upload from './Upload'
 
@@ -21,7 +21,7 @@ const CreateProduct = () => {
 
 
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.product)
+   
 
     useEffect(() => {
         dispatch(allProduct())
@@ -46,6 +46,7 @@ const CreateProduct = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
+        input.image = url
         dispatch(createProduct(input));
         alert('Product created succesfully');
         setInput({
@@ -55,7 +56,7 @@ const CreateProduct = () => {
             brand: '',
             stock: '',
             price: '',
-            image: `${url}`
+            image: ''
         })
     }
 
@@ -116,25 +117,7 @@ const CreateProduct = () => {
                         onChange={(e) => { handleChange(e) }}
                     />
                 </div>
-                <button style={{backgroundColor: 'red'}} type='submit'>Crear</button>
-            </form>
-            <div>
-                {
-                    products?.map((p) => {
-                        return (
-                            <div style={{border: '1px solid black', display: 'flex', flexDirection: 'column'}}>
-                            <div>{p.name}</div>
-                            <div>{p.description}</div>
-                            <div>{p.genero}</div>
-                            <div>{p.brand}</div>
-                            <div>{p.stock}</div>
-                            <div>{p.price}</div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <Upload onUpload={handleOnUpload}>
+                <Upload onUpload={handleOnUpload}>
           {({ open }) => {
             function handleOnClick(e) {
               e.preventDefault();
@@ -147,7 +130,10 @@ const CreateProduct = () => {
             )
           }}
         </Upload>
-        <p><img src={ url } alt="Uploaded resource" /></p>
+        {url ? 
+        (<p><img width='50px' src={ url } alt="Uploaded resource" /></p>): (<h1></h1>)}
+                <button style={{backgroundColor: 'red'}} type='submit'>Crear</button>
+            </form>
         </div>
     );
 };
