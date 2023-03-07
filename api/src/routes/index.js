@@ -16,7 +16,7 @@ router.use('/cart', Cart);
 router.use('/user', User);
 router.use('/offer', Offer);
 router.use('/auth', Auth);
-
+  
 
 
 module.exports = router

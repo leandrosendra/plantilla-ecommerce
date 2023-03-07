@@ -1,18 +1,21 @@
 const {encrypt, compare} = require('../helpers/encryptPassword')
 const {tokenSign} = require('../helpers/generateToken')
-const { User} = require('../database/db.js')
+const { User, Cart} = require('../database/db.js')
 const { Router } = require('express');
 const router = Router();
 
 //REGISTER
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res) => { 
     const { name, email, password} = req.body;
     const passwordHash = await encrypt(password)
     try {
+        const cart = await Cart.create()
         const registerUser = await User.create({
             name, email, password: passwordHash
         })
+        const h = cart.id
+        registerUser.setCart(h)
         res.status(200).json(registerUser)
     } catch (err) {
         console.log(err);

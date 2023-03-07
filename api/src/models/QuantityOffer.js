@@ -1,15 +1,14 @@
 const { DataTypes} = require ('sequelize')
 
-const QuantityCart = (sequelize)=> sequelize.define("QuantityCart", {
+const QuantityOffer = (sequelize)=> sequelize.define("QuantityOffer", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     quantity:{ 
-        type: DataTypes.INTEGER,
-       // primaryKey: true
+        type: DataTypes.INTEGER
     }
 })
 
-module.exports = QuantityCart; 
+module.exports = QuantityOffer; 

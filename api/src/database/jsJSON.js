@@ -96,3 +96,48 @@
         
     }
 ]
+{   
+    idCart:1,
+    products:[
+        {quantity:1,
+        product:{
+            id:1,
+            name:name
+            }
+        },
+        {quantity:3,
+            product:{
+                id:6,
+                name:name
+            }
+        },
+        {quantity:1,
+            product:{
+                id:4,
+                name:name
+            }
+        },
+    ],
+    offers:[
+        {quantity:1,
+        product:{
+            id:1,
+            name:name
+            }
+        },
+        {quantity:3,
+            product:{
+                id:6,
+                name:name
+            }
+        },
+        {quantity:1,
+            product:{
+                id:4,
+                name:name
+            }
+        },
+    ]
+}        
+
+

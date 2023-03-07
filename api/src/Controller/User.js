@@ -2,7 +2,13 @@ const { User, Cart } = require('../database/db.js')
 
 const getUser = async (req, res) => {
     try {
-        const user = await User.findAll()
+        const user = await User.findAll({
+            include:[
+                {
+                    model:Cart
+                }
+            ]
+        })
         res.status(200).json(user)
     } catch (err) {
         console.log(err);
