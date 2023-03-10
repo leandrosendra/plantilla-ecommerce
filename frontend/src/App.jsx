@@ -4,6 +4,8 @@ import SignIn from './components/SignIn'
 import Overview from './components/ProductOverview'
 import CreateProduct from "./components/CreateProduct";
 import AllProducts from "./components/AllProducts";
+import Register from "./components/Register";
+import  Login  from "./components/Login";
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
       <Route path="/productOverview" element={<Overview />} />
       <Route path ="/createProduct" element={<CreateProduct />} />
       <Route path ="/allproducts" element={<AllProducts />} />
+      <Route path ="/register" element={<Register />} />
+      <Route path ="/login" element={<Login />} />
     </Routes>
     </div>
   )

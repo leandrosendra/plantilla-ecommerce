@@ -15,8 +15,8 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev')); 
 
-//createColors();
-//createSize(); 
+// createColors();
+// createSize();
  
 app.use("/", routes);
 
