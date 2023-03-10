@@ -11,6 +11,6 @@ router.put('/cart/:id', putProductOffer);
 
 router.delete('/cart/delete/:id', deleteTotalCart );
 
-router.delete('/cart/:id', deleteProductOffer)
+router.delete('/cart/:id', deleteProductOffer);
 
 module.exports = router
