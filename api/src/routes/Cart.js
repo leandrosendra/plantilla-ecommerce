@@ -1,16 +1,17 @@
 const { Router } = require('express');
 const router = Router();
-const { Cart, QuantityCart, Product } = require('../database/db.js');
-const { getCart, postProductOffer, putProductOffer, deleteTotalCart, deleteProductOffer } = require('../Controller/Cart.js');
+const { getCart, postProductOffer, sumQuantityCart, restQuantityCart, putProductOffer, deleteTotalCart, deleteProductOffer } = require('../Controller/Cart.js');
 
 router.get('/cart', getCart);
 
-router.post('/cart/:id', postProductOffer);
+router.post('/cart/:idUser', postProductOffer);
 
-router.put('/cart/:id', putProductOffer);
+router.put('/sum/:idUser', sumQuantityCart);
+router.put('/rest/:idUser', restQuantityCart);
+router.put('/cart/:idUser', putProductOffer);
 
-router.delete('/cart/delete/:id', deleteTotalCart );
+router.delete('/cart/delete/:idUser', deleteTotalCart );
 
-router.delete('/cart/:id', deleteProductOffer);
+router.delete('/cart/:idUser', deleteProductOffer);
 
 module.exports = router
