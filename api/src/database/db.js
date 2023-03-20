@@ -16,6 +16,7 @@ const colorM = require ('../models/Color.js');
 const sizeM = require ('../models/Size.js');
 const quantityCartM = require ('../models/QuantityCart.js');
 const quantityOfferM = require ('../models/QuantityOffer.js');
+const likeProductM = require ('../models/LikeProduct.js');
 
 
 const sequelize = new Sequelize(NAME_BD, USER_DB, PASS_DB, {
@@ -36,19 +37,23 @@ colorM(sequelize);
 sizeM(sequelize);
 quantityCartM(sequelize);
 quantityOfferM(sequelize);
+likeProductM(sequelize);
 
-const{ Product, Category, Color, Size, User, Cart, Comment, Offer, QuantityOffer, QuantityCart } = sequelize.models;
+const{ Product, Category, Color, Size, User, Cart, Comment, Offer, QuantityOffer, QuantityCart, LikeProduct } = sequelize.models;
  
 //console.log(sequelize.models)
 
 Product.belongsTo(Category);
 Category.hasMany(Product);
 
-Color.belongsToMany(Product, {through: 'color_product'})
-Product.belongsToMany(Color, {through: 'color_product'})
+Color.belongsToMany(Product, {through: 'color_product'});
+Product.belongsToMany(Color, {through: 'color_product'});
 
-Size.belongsToMany(Product, {through: 'size_product'})
-Product.belongsToMany(Size, {through: 'size_product'})
+Size.belongsToMany(Product, {through: 'size_product'});
+Product.belongsToMany(Size, {through: 'size_product'});
+
+User.belongsToMany(Product, {through: LikeProduct});
+Product.belongsToMany(User, {through: LikeProduct});
 
 
 QuantityCart.belongsTo(Cart);
@@ -78,7 +83,11 @@ User.belongsTo(Cart)
 Cart.hasMany(User)
 //promo -> namePromocional, [1 o + Productos, ... ] , PricePromocional,
 
+Comment.belongsTo(User);
+User.hasMany(Comment);
 
+Comment.belongsTo(Product);
+Product.hasMany(Comment);
 
 
  

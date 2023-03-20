@@ -1,7 +1,7 @@
 const { Cart, QuantityCart, Product, Offer, QuantityOffer } = require('../database/db.js');
 
 
-const getCart = async(req,res)=>{
+const getCart = async(req,res)=>{//hacer get por id
     try{
         const cart = await Cart.findAll({
             include:[
@@ -31,7 +31,7 @@ const getCart = async(req,res)=>{
 //hacer get de un solo cart
 
 const postProductOffer = async(req, res)=>{
-    const {idUser}= req.params;
+    const {idUser}= req.params;//catergory
     const {products, offers} = req.body;
 
     try {
@@ -54,7 +54,7 @@ const postProductOffer = async(req, res)=>{
                     idProducts.push(Number(qtyProd.id));
                 }else{ //si existe solo sumo uno a la cantidad del producto
                     console.log("ya existe");
-                    prod.quantity ++;
+                    prod.quantity ++; //que sume quantity si existe
                     await prod.save();
                 }
             }); 
@@ -155,7 +155,7 @@ const restQuantityCart = async(req, res)=>{
     }
 }
 
-const putProductOffer = async(req, res)=>{
+const putProductOffer = async(req, res)=>{//poder usar idQuantityCart
     const {idUser} = req.params;
     const {idProducts, idOffers, quantity} = req.body;
     try {

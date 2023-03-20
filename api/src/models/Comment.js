@@ -7,20 +7,11 @@ const Comment = (sequelize) => sequelize.define("Comment", {
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
+    comments: {
         type: DataTypes.STRING
     },
-    description: {
+    date:{
         type: DataTypes.STRING
-    },
-    stock: {
-        type: DataTypes.INTEGER
-    },
-    image: {
-        type: DataTypes.STRING
-    },
-    price:{
-        type: DataTypes.INTEGER 
     }
 })
 
