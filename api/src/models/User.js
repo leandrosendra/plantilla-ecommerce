@@ -23,6 +23,9 @@ const User = (sequelize) => sequelize.define("User", {
         defaultValue: 'user',
         allowNull: false,
     },
+    likeProduct:{
+        type: DataTypes.ARRAY(DataTypes.INTEGER)
+    }
 })
 
 

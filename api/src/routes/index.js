@@ -6,7 +6,7 @@ const Category = require('./Category.js');
 const Cart = require('./Cart.js');
 const Offer = require('./Offer.js');
 const Auth = require('./Auth.js')
-
+const Actions = require('./AccionUsers.js')
 
 
 //router.use('/prueba', Prueba);
@@ -15,6 +15,7 @@ router.use('/category', Category);
 router.use('/cart', Cart);
 router.use('/offer', Offer);
 router.use('/auth', Auth);
+router.use('/actions', Actions)
   
 
 

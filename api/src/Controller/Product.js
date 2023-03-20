@@ -1,6 +1,7 @@
-const { Product, Category, Gender, Size, Color } = require("../database/db.js");
+const { Product, Category, Gender, Size, Color, Comment, User } = require("../database/db.js");
 
-const getProduct = async (req, res) => {
+
+  const getProduct = async (req, res) => {
     try {
       const product = await Product.findAll({
         include: [
@@ -13,7 +14,8 @@ const getProduct = async (req, res) => {
           {
             model: Size, 
           }
-        ]
+        ],
+        order: [['id', 'ASC']]
       });
       res.status(200).json(product); 
     } catch (err) {
@@ -21,8 +23,35 @@ const getProduct = async (req, res) => {
     }
   }
 
+  const getProductId = async (req, res) =>{
+    const {idProduct} = req.params;
 
-const postPrduct = async (req, res) => {
+    try {
+      console.log(idProduct);
+      const prod = await Product.findOne({
+        where:{
+          id:idProduct
+        },
+        include:[
+          { 
+            model:Comment,
+            attributes: { exclude: ['UserId','ProductId'] },
+            //order: [['date', 'DESC']],
+            include:[
+              { model: User,
+                attributes:["name", "email"]
+              },
+            ],
+          },
+        ]
+      })
+      res.status(200).json(prod);
+    } catch (err) {
+      console.log(err);      
+    }
+  }
+
+  const postPrduct = async (req, res) => {
     const { name, brand, genero, description, stock, image, price, categoryId, ColorId, SizeId } = req.body;
     try {
       const product = await Product.create({  
@@ -43,17 +72,17 @@ const postPrduct = async (req, res) => {
     }
   }
 
-const bulkProduct = async(req,res)=>{
-    const bulk = req.body;
-    try {
-      const products = await Product.bulkCreate(bulk)
-      res.status(200).json(products) 
-      //console.log(products)
-    } catch (err) {
-        console.log(err);
-        console.log('err create user for bulk'); 
+  const bulkProduct = async(req,res)=>{
+      const bulk = req.body;
+      try {
+        const products = await Product.bulkCreate(bulk)
+        res.status(200).json(products) 
+        //console.log(products)
+      } catch (err) {
+          console.log(err);
+          console.log('err create user for bulk'); 
+      }
     }
-  }
 
   const putProuct = async (req, res) => { 
     const { id } = req.params;
@@ -88,6 +117,7 @@ const deleteProduct = async (req, res) => {
 
 module.exports = {
     getProduct,
+    getProductId,
     postPrduct,
     bulkProduct,
     putProuct,

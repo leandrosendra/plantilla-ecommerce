@@ -29,6 +29,10 @@ const Product = (sequelize) => sequelize.define("Product", {
     //color,Size,Category
     price:{
         type: DataTypes.INTEGER 
+    },
+    like:{
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     }
 })
 

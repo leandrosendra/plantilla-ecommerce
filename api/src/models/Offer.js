@@ -10,7 +10,7 @@ const Offer = (sequelize)=> sequelize.define("Offer", {
     name:{
         type: DataTypes.STRING,
     },
-    Image:{
+    image:{
         type: DataTypes.TEXT,
     },
     price:{

@@ -7,11 +7,11 @@ console.log(port);
 
 (async ()=> {
     try {
-      app.listen(port) 
-      await sequelize.sync({force: false});  
+      app.listen(port);
+      await sequelize.sync({force: false});
       console.log('server running');     
     } catch (error) {  
       console.error('Unable to connect to the database:', error);
     }
-})() 
+})()
 
