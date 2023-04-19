@@ -13,14 +13,26 @@ const Product = (sequelize) => sequelize.define("Product", {
     description: {
         type: DataTypes.STRING
     },
-    stock: {
-        type: DataTypes.INTEGER
+    genero: {
+        type: DataTypes.ENUM('Masculino', 'Femenino', 'Sin Genero'),
+			defaultValue: 'Sin Genero'
     },
-    image: {
+    image: { 
+        type: DataTypes.TEXT
+    },
+    brand:{
         type: DataTypes.STRING
     },
+    stock:{
+        type: DataTypes.INTEGER,
+    },
+    //color,Size,Category
     price:{
         type: DataTypes.INTEGER 
+    },
+    like:{
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     }
 })
 

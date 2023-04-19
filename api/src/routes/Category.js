@@ -1,29 +1,14 @@
 const { Router } = require('express');
 const router = Router();
-const { Category } = require('../database/db.js');
+const { getCategory, getColors, getSize, postCategory, postColor, postSize } = require('../Controller/Category.js')
 
 
+router.get('/category', getCategory);
+router.get('/color', getColors);
+router.get('/size', getSize);
 
-router.get('/', async (req, res) => {
-    try {
-        const category = await Category.findAll()
-        res.status(200).json(category)
-    } catch (err) {
-        console.log(err);
-    }
-})
+router.post('/category', postCategory);
+//router.post('/color', postColor);
+//router.post('/size', postSize);
 
-router.post('/', async (req, res) => {
-    const { name } = req.body; 
-    console.log(name);
-    try {
-        const category = await Category.create({
-            name
-        })
-        res.status(200).json(category)
-    } catch (err) {
-        console.log(err);
-    }
-})
-
-module.exports = router
+module.exports = router 
